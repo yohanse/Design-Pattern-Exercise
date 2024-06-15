@@ -1,5 +1,6 @@
 package state;
 
-public class Tool {
-
+public interface Tool {
+    void moveUp();
+    void moveDown();
 }
