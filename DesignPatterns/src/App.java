@@ -10,17 +10,30 @@ import strategy.HighContrastFilter;
 import strategy.ImageStorage;
 import strategy.JpegCompressor;
 import strategy.PngCompressor;
+import templete.AuditRecord;
+import templete.GenerateReportTask;
+import templete.TaskExecutor;
+import templete.TransferMoneyTask;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        // 5. Templete Pattern
+        
+        var auditRecord = new AuditRecord();
+
+        var task = new TaskExecutor(new GenerateReportTask(auditRecord));
+        task.execute();
+
+        task.setCurrentTask(new TransferMoneyTask(auditRecord));
+        task.execute();
 
         // 4. Strategy Pattern
-        var imageStorage = new ImageStorage(new JpegCompressor(), new BlackAndWhiteFilter());
-        imageStorage.store();
-        
-        imageStorage.setCompressor(new PngCompressor());
-        imageStorage.setFilter(new HighContrastFilter());
-        imageStorage.store();
+        // var imageStorage = new ImageStorage(new JpegCompressor(), new BlackAndWhiteFilter());
+        // imageStorage.store();
+
+        // imageStorage.setCompressor(new PngCompressor());
+        // imageStorage.setFilter(new HighContrastFilter());
+        // imageStorage.store();
 
 
         //3. Iterator Pattern
