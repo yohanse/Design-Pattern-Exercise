@@ -1,3 +1,6 @@
+import command.AddCustomerCommand;
+import command.CustomerService;
+import command.framework.Button;
 import iterator.History;
 import iterator.Iterator;
 import memento.Editor;
@@ -17,15 +20,24 @@ import templete.TransferMoneyTask;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        // 6. Command Pattern
+
+        var customer = new CustomerService();
+        var addCustomerCommand = new AddCustomerCommand(customer);
+
+        var button = new Button(addCustomerCommand);
+
+        button.onClick();
+        button.onClick();
         // 5. Templete Pattern
         
-        var auditRecord = new AuditRecord();
+        // var auditRecord = new AuditRecord();
 
-        var task = new TaskExecutor(new GenerateReportTask(auditRecord));
-        task.execute();
+        // var task = new TaskExecutor(new GenerateReportTask(auditRecord));
+        // task.execute();
 
-        task.setCurrentTask(new TransferMoneyTask(auditRecord));
-        task.execute();
+        // task.setCurrentTask(new TransferMoneyTask(auditRecord));
+        // task.execute();
 
         // 4. Strategy Pattern
         // var imageStorage = new ImageStorage(new JpegCompressor(), new BlackAndWhiteFilter());
