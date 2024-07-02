@@ -5,6 +5,9 @@ import iterator.History;
 import iterator.Iterator;
 import memento.Editor;
 import memento.EditorHistory;
+import observer.Chart;
+import observer.DataSource;
+import observer.SpreadSheet;
 import state.Brush;
 import state.Canvas;
 import state.Selection;
@@ -20,17 +23,30 @@ import templete.TransferMoneyTask;
 
 public class App {
     public static void main(String[] args) throws Exception {
+
+        // 7. Observer Pattern
+
+        var data = new DataSource();
+        var chart = new Chart();
+        var spreadSheet = new SpreadSheet();
+
+        data.attachObserver(chart);
+        data.attachObserver(spreadSheet);
+
+        data.setValue(10);
+
+
         // 6. Command Pattern
+        // var customer = new CustomerService();
+        // var addCustomerCommand = new AddCustomerCommand(customer);
 
-        var customer = new CustomerService();
-        var addCustomerCommand = new AddCustomerCommand(customer);
+        // var button = new Button(addCustomerCommand);
 
-        var button = new Button(addCustomerCommand);
+        // button.onClick();
+        // button.onClick();
 
-        button.onClick();
-        button.onClick();
+
         // 5. Templete Pattern
-        
         // var auditRecord = new AuditRecord();
 
         // var task = new TaskExecutor(new GenerateReportTask(auditRecord));
@@ -38,6 +54,7 @@ public class App {
 
         // task.setCurrentTask(new TransferMoneyTask(auditRecord));
         // task.execute();
+
 
         // 4. Strategy Pattern
         // var imageStorage = new ImageStorage(new JpegCompressor(), new BlackAndWhiteFilter());
@@ -62,6 +79,7 @@ public class App {
         //     browseHistoryIterator.next();
         // }
 
+
         // 2. State object pattern
         // var canvas = new Canvas();
         // canvas.setCurrent(new Brush());
@@ -71,6 +89,7 @@ public class App {
         // canvas.setCurrent(new Selection());
         // canvas.mouseUp();
         // canvas.mouseDown();
+
 
         // 1. Memento pattern
         // var editor = new Editor();
