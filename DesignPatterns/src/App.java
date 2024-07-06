@@ -1,6 +1,8 @@
 import command.AddCustomerCommand;
 import command.CustomerService;
 import command.framework.Button;
+import composite.Group;
+import composite.Shape;
 import iterator.History;
 import iterator.Iterator;
 import memento.Editor;
@@ -24,16 +26,39 @@ import templete.TransferMoneyTask;
 public class App {
     public static void main(String[] args) throws Exception {
 
+        // 2.1 Composite Pattern
+        var group = new Group();
+        var group1 = new Group();
+        var group2 = new Group();
+
+        var circle1 = new Shape("Circle - 1");
+        var circle2 = new Shape("Circle - 2");
+        var rectangle1 = new Shape("rectangle - 1");
+        var rectangle2 = new Shape("rectangle - 2");
+
+        group.add(group1);
+        group.add(group2);
+        group1.add(circle1);
+        group2.add(rectangle1);
+        group1.add(circle2);
+        group2.add(rectangle2);
+        
+        group1.render();
+        System.out.println("---------------------------");
+        group2.render();
+        System.out.println("---------------------------");
+        group.render();
+
         // 7. Observer Pattern
 
-        var data = new DataSource();
-        var chart = new Chart();
-        var spreadSheet = new SpreadSheet();
+        // var data = new DataSource();
+        // var chart = new Chart();
+        // var spreadSheet = new SpreadSheet();
 
-        data.attachObserver(chart);
-        data.attachObserver(spreadSheet);
+        // data.attachObserver(chart);
+        // data.attachObserver(spreadSheet);
 
-        data.setValue(10);
+        // data.setValue(10);
 
 
         // 6. Command Pattern
