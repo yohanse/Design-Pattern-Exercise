@@ -3,6 +3,7 @@ import adapter.Image;
 import adapter.ImageView;
 import adapter.VivdFIlter;
 import adapter.avaFilter.Carmel;
+import adapter.exercise.EmailClient;
 import command.AddCustomerCommand;
 import command.CustomerService;
 import command.framework.Button;
@@ -33,10 +34,14 @@ import templete.TransferMoneyTask;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        // 3.1 exericse on Adapter Pattern
+        var emailClient = new EmailClient();
 
-        // 3 Adapter Pattern
-        var image = new ImageView(new Image());
-        image.apply(new CarmelFilter(new Carmel()));
+        emailClient.downloadEmails();
+
+        // // 3 Adapter Pattern
+        // var image = new ImageView(new Image());
+        // image.apply(new CarmelFilter(new Carmel()));
 
 
 
