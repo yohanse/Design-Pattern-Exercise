@@ -1,3 +1,8 @@
+import adapter.CarmelFilter;
+import adapter.Image;
+import adapter.ImageView;
+import adapter.VivdFIlter;
+import adapter.avaFilter.Carmel;
 import command.AddCustomerCommand;
 import command.CustomerService;
 import command.framework.Button;
@@ -29,32 +34,38 @@ import templete.TransferMoneyTask;
 public class App {
     public static void main(String[] args) throws Exception {
 
+        // 3 Adapter Pattern
+        var image = new ImageView(new Image());
+        image.apply(new CarmelFilter(new Carmel()));
+
+
+
         // 2.1 Exercise Composite Pattern
 
-        var team = new Team();
-        var team1 = new Team();
-        var team2 = new Team();
-        var team3 = new Team();
+        // var team = new Team();
+        // var team1 = new Team();
+        // var team2 = new Team();
+        // var team3 = new Team();
 
-        team1.add(new Human("Yoahnse Mehabw"));
-        team1.add(new Human("John Mehabw"));
-        team1.setTruck(new Truck("Truck 1"));
+        // team1.add(new Human("Yoahnse Mehabw"));
+        // team1.add(new Human("John Mehabw"));
+        // team1.setTruck(new Truck("Truck 1"));
 
-        team2.add(new Human("Ruth Assefa"));
-        team2.add(new Human("Haile Rambo"));
-        team2.setTruck(new Truck("Truck 2"));
+        // team2.add(new Human("Ruth Assefa"));
+        // team2.add(new Human("Haile Rambo"));
+        // team2.setTruck(new Truck("Truck 2"));
 
-        team3.add(new Human("Gebrsha"));
-        team3.add(new Human("Yared Amare"));
-        team3.setTruck(new Truck("Truck 3"));
+        // team3.add(new Human("Gebrsha"));
+        // team3.add(new Human("Yared Amare"));
+        // team3.setTruck(new Truck("Truck 3"));
 
-        team.add(team1);
-        team.add(team2);
-        team.setTruck(new Truck("Truck 0"));
+        // team.add(team1);
+        // team.add(team2);
+        // team.setTruck(new Truck("Truck 0"));
         
-        team2.add(team3);
+        // team2.add(team3);
 
-        team.render(0);
+        // team.render(0);
 
         // 2.1 Composite Pattern
         // var group = new Group();
