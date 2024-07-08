@@ -3,6 +3,9 @@ import command.CustomerService;
 import command.framework.Button;
 import composite.Group;
 import composite.Shape;
+import composite.exercise.Human;
+import composite.exercise.Team;
+import composite.exercise.Truck;
 import iterator.History;
 import iterator.Iterator;
 import memento.Editor;
@@ -26,28 +29,55 @@ import templete.TransferMoneyTask;
 public class App {
     public static void main(String[] args) throws Exception {
 
-        // 2.1 Composite Pattern
-        var group = new Group();
-        var group1 = new Group();
-        var group2 = new Group();
+        // 2.1 Exercise Composite Pattern
 
-        var circle1 = new Shape("Circle - 1");
-        var circle2 = new Shape("Circle - 2");
-        var rectangle1 = new Shape("rectangle - 1");
-        var rectangle2 = new Shape("rectangle - 2");
+        var team = new Team();
+        var team1 = new Team();
+        var team2 = new Team();
+        var team3 = new Team();
 
-        group.add(group1);
-        group.add(group2);
-        group1.add(circle1);
-        group2.add(rectangle1);
-        group1.add(circle2);
-        group2.add(rectangle2);
+        team1.add(new Human("Yoahnse Mehabw"));
+        team1.add(new Human("John Mehabw"));
+        team1.setTruck(new Truck("Truck 1"));
+
+        team2.add(new Human("Ruth Assefa"));
+        team2.add(new Human("Haile Rambo"));
+        team2.setTruck(new Truck("Truck 2"));
+
+        team3.add(new Human("Gebrsha"));
+        team3.add(new Human("Yared Amare"));
+        team3.setTruck(new Truck("Truck 3"));
+
+        team.add(team1);
+        team.add(team2);
+        team.setTruck(new Truck("Truck 0"));
         
-        group1.render();
-        System.out.println("---------------------------");
-        group2.render();
-        System.out.println("---------------------------");
-        group.render();
+        team2.add(team3);
+
+        team.render(0);
+
+        // 2.1 Composite Pattern
+        // var group = new Group();
+        // var group1 = new Group();
+        // var group2 = new Group();
+
+        // var circle1 = new Shape("Circle - 1");
+        // var circle2 = new Shape("Circle - 2");
+        // var rectangle1 = new Shape("rectangle - 1");
+        // var rectangle2 = new Shape("rectangle - 2");
+
+        // group.add(group1);
+        // group.add(group2);
+        // group1.add(circle1);
+        // group2.add(rectangle1);
+        // group1.add(circle2);
+        // group2.add(rectangle2);
+        
+        // group1.render();
+        // System.out.println("---------------------------");
+        // group2.render();
+        // System.out.println("---------------------------");
+        // group.render();
 
         // 7. Observer Pattern
 
