@@ -12,6 +12,9 @@ import composite.Shape;
 import composite.exercise.Human;
 import composite.exercise.Team;
 import composite.exercise.Truck;
+import decorator.CloudStream;
+import decorator.CompressCloudStream;
+import decorator.EncryptedCloudStream;
 import iterator.History;
 import iterator.Iterator;
 import memento.Editor;
@@ -34,6 +37,14 @@ import templete.TransferMoneyTask;
 
 public class App {
     public static void main(String[] args) throws Exception {
+
+        // 4 Decorator Pattern
+        var cloudStream = new CloudStream();
+        var encryptStream = new EncryptedCloudStream(cloudStream);
+        var compressStream = new CompressCloudStream(encryptStream);
+
+        compressStream.write("Yohanse Mehabaw");
+
         // 3.1 exericse on Adapter Pattern
         var emailClient = new EmailClient();
 
