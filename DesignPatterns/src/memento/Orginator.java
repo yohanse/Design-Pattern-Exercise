@@ -1,4 +1,4 @@
-package memnto;
+package memento;
 
 public class Orginator {
     private String content;
